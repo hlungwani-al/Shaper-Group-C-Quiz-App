@@ -37,6 +37,19 @@ body {
     margin-left: 10px;
     font-size: 0.9em;
   }
+
+  .usernameInput {
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 0.9em;
+  }
+
+  .teaser-header {
+    margin-top: 250px;
+  }
   
   .quizContainer {
     margin: 20px ; 

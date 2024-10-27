@@ -1,3 +1,5 @@
+
+
 import { score, quizData, loadQuestion, currentQuestion, checkAnswer, displayScore } from '../js/quiz.js';
 
 const quizContainer = document.getElementById("quiz-container");
@@ -5,6 +7,22 @@ const optionsContainer = document.getElementById("optionsContainer");
 const quizQuestion = document.getElementById("quizQuestion");
 const submitButton = document.getElementById("submit");
 const questionCountDisplay = document.getElementById("currentQuestionCount");
+
+
+
+function storeUsername() {
+  const usernameInput = document.getElementById('username');
+  const username = usernameInput.value.trim(); // Get the username inside the function
+
+  if (username) {
+      const username_score = JSON.parse(localStorage.getItem('username_score')) || [];
+      username_score.push(username);
+
+      localStorage.setItem('username_score', JSON.stringify(username_score)); // Fix: use the same key for storage
+  } else {
+      alert('Please enter a valid username.');
+  }
+}
 
 // Function to load a question
 function displayQuestion() {

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">38.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/20</span>
+                <span class='fraction'>7/18</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">38.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/20</span>
+                <span class='fraction'>7/18</span>
             </div>
         
             
@@ -169,7 +169,8 @@
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
 <a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,30 +243,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -344,34 +346,35 @@ function loadQuestion(currentQuestion){
 &nbsp;
 &nbsp;
 &nbsp;
-function checkAnswer(selectedOption){
+function checkAnswer(selectedOptionIndex) {
 &nbsp;
-&nbsp;
-    const currentData = quizData[currentQuestion];
-    
-&nbsp;
-    <span class="missing-if-branch" title="else path not taken" >E</span>if(!selectedOption){
-        throw new Error("Please select an option");
+    // Check if an option is selected
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!selectedOptionIndex) {
+        throw new Error('Please select an answer before submitting.');
     }
+    
+    const currentData = <span class="cstat-no" title="statement not covered" >quizData[currentQuestion];</span>
 &nbsp;
-    const optionIndex = <span class="cstat-no" title="statement not covered" >currentData.Answer;</span>
-    const correctAnswerText = <span class="cstat-no" title="statement not covered" >currentData.Options[optionIndex]</span>
+    // Convert the selected option to a number (index)
+    const selectedIndex = <span class="cstat-no" title="statement not covered" >parseInt(selectedOptionIndex);</span>
 &nbsp;
-   // Check if the selected option is correct and increment the score if it is.
-<span class="cstat-no" title="statement not covered" >    if(selectedOption === correctAnswerText){</span>
+    // Check if the selected index matches the answer index and increment score if correct
+<span class="cstat-no" title="statement not covered" >    if (selectedIndex === currentData.Answer) {</span>
 <span class="cstat-no" title="statement not covered" >        score++;</span>
     }
-<span class="cstat-no" title="statement not covered" >    currentQuestion++;</span>
-<span class="cstat-no" title="statement not covered" >    displayScore(score);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return score +  " " +correctAnswerText + " " + selectedOption;</span>
+    // Increment the current question and update the score display
+<span class="cstat-no" title="statement not covered" >    currentQuestion++;</span>
+<span class="cstat-no" title="statement not covered" >    displayScore(); </span>// Update the score display
+<span class="cstat-no" title="statement not covered" >    return score; </span>// Return the updated score
 }
+&nbsp;
 &nbsp;
 &nbsp;
 &nbsp;
 function <span class="fstat-no" title="function not covered" >displayScore(</span>){
     // Display the final score
-<span class="cstat-no" title="statement not covered" >    console.log("Your final score is: " + score);</span>
+    //console.log("Your final score is: " + score);
 <span class="cstat-no" title="statement not covered" >    return score;</span>
 }
 &nbsp;
@@ -388,7 +391,7 @@ export {score,quizData,loadQuestion,currentQuestion,checkAnswer,displayScore}
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-25T11:44:13.941Z
+                at 2024-10-27T21:47:36.558Z
             </div>
         <script src="prettify.js"></script>
         <script>

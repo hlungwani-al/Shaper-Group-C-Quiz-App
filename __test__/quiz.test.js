@@ -102,7 +102,7 @@ describe('[checkAnswer]',()=>{
 
     test('Throw an error if no option is selected', () => {
         const selectedAnswer = '';
-     expect(() => checkAnswer(selectedAnswer)).toThrow( 'Please select an option');
+     expect(() => checkAnswer(selectedAnswer)).toThrow( 'Please select an answer before submitting.');
     })   
 
 })

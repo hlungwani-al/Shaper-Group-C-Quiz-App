@@ -68,6 +68,12 @@ function loadQuestion(currentQuestion){
 
 
 function checkAnswer(selectedOptionIndex) {
+
+    // Check if an option is selected
+    if (!selectedOptionIndex) {
+        throw new Error('Please select an answer before submitting.');
+    }
+    
     const currentData = quizData[currentQuestion];
 
     // Convert the selected option to a number (index)
